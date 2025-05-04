@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- =============================== -->
+  <!-- Metadata dan link eksternal CSS -->
+  <!-- =============================== -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Detail Menu</title>
+
+  <!-- Google Fonts: Poppins untuk tampilan teks -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <!-- Bootstrap CSS untuk tata letak responsif dan komponen UI -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- File CSS kustom -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- ===================================== -->
+<!-- Navbar: Navigasi atas berisi nama brand -->
+<!-- ===================================== -->
+<nav class="navbar navbar-expand-lg custom-navbar px-4">
+  <div class="container-fluid">
+    <!-- Link ke halaman utama (index) -->
+    <a class="navbar-brand text-white fw-semibold" href="index.php">🍜 Aneska Noodle</a>
+  </div>
+</nav>
+
+<!-- ====================================================== -->
+<!-- Bagian Detail Produk: Menampilkan informasi mie secara lengkap -->
+<!-- ====================================================== -->
+<div class="container my-5">
+  <div class="row align-items-center gy-4">
+
+    <!-- ========================================= -->
+    <!-- Kolom kiri: Gambar produk mie ditampilkan -->
+    <!-- ========================================= -->
+    <div class="col-md-6">
+      <img id="product-img" src="" alt="Noodle Image" class="img-fluid rounded shadow-lg w-100" style="max-height: 400px; object-fit: cover;">
+    </div>
+
+    <!-- ==================================================== -->
+    <!-- Kolom kanan: Nama, harga, deskripsi, dan tombol kembali -->
+    <!-- ==================================================== -->
+    <div class="col-md-6">
+      <div class="bg-white p-4 rounded shadow-sm">
+        <h2 id="product-name" class="fw-semibold mb-3 text-dark"></h2>
+        <h5 id="product-price" class="price mb-3"></h5>
+        <p id="product-desc" class="text-muted" style="line-height: 1.6;"></p>
+
+        <!-- Tombol untuk kembali ke halaman menu utama -->
+        <a href="index.html" class="btn btn-outline-danger mt-4">← Kembali ke Menu</a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ======================================================== -->
+<!-- JavaScript: Menampilkan data menu berdasarkan parameter ID -->
+<!-- ======================================================== -->
+<script>
+  // Mengambil parameter ID dari URL
+  const params = new URLSearchParams(window.location.search);
+  const id = params.get("id");
+
+  // Data lengkap menu mie disimpan dalam objek berdasarkan ID
+  const noodleDetails = {
+    1: { name: "Mie Pedas Mantap", price: "Rp. 25,000", desc: "Mie super pedas dengan bumbu rahasia khas Aneska." },
+    2: { name: "Mie Ayam Special", price: "Rp. 22,000", desc: "Mie ayam klasik dengan topping ayam melimpah." },
+    3: { name: "Mie Goreng Nusantara", price: "Rp. 24,000", desc: "Mie goreng khas nusantara dengan cita rasa lokal." },
+    4: { name: "Mie Kari Ayam", price: "Rp. 23,000", desc: "Mie kuah kari ayam dengan aroma rempah otentik." },
+    5: { name: "Mie Tomyum", price: "Rp. 26,000", desc: "Mie kuah tomyum khas Thailand dengan rasa asam pedas." },
+    6: { name: "Mie Seafood", price: "Rp. 27,000", desc: "Mie seafood dengan isian udang dan cumi segar." },
+    7: { name: "Mie Kuah Santan", price: "Rp. 24,000", desc: "Mie kuah santan lembut dengan rasa gurih yang khas." },
+    8: { name: "Mie Sayur Sehat", price: "Rp. 20,000", desc: "Mie sehat dengan campuran berbagai sayur segar." }
+  };
+
+  // Jika data ditemukan berdasarkan ID, tampilkan kontennya
+  const data = noodleDetails[id];
+
+  if (data) {
+    document.getElementById("product-name").textContent = data.name;
+    document.getElementById("product-price").textContent = data.price;
+    document.getElementById("product-desc").textContent = data.desc;
+    document.getElementById("product-img").src = `img/mie${id}.jpg`;
+  } else {
+    // Jika tidak ditemukan, tampilkan pesan error
+    document.querySelector('.container').innerHTML = "<h3>Produk tidak ditemukan.</h3>";
+  }
+</script>
+
+<!-- ============================================ -->
+<!-- Footer: Informasi bisnis di bagian paling bawah -->
+<!-- ============================================ -->
+<footer class="custom-footer text-white py-4 mt-5">
+  <div class="container">
+    <div class="row text-center text-md-start">
+      
+      <!-- ============================ -->
+      <!-- Kolom 1: Logo dan slogan -->
+      <!-- ============================ -->
+      <div class="col-md-4 mb-4 mb-md-0 d-flex flex-column align-items-center align-items-md-start">
+        <h4 class="fw-bold text-red">🍜 Aneska Noodle</h4>
+        <p class="text-red">Rasa Tradisional, Sentuhan Modern.</p>
+      </div>
+
+      <!-- ============================ -->
+      <!-- Kolom 2: Alamat dan kontak -->
+      <!-- ============================ -->
+      <div class="col-md-4 mb-4 mb-md-0">
+        <h6 class="fw-bold text-red">ALAMAT</h6>
+        <p class="mb-1 text-red">Jl. Rasa Gurih No. 8, Kel. Enak, Jakarta Selatan</p>
+        <p class="text-red">DKI Jakarta, 12240</p>
+        <!-- Tombol WhatsApp untuk menghubungi -->
+        <a href="https://wa.me/6281234567890" class="btn btn-sm btn-outline-red rounded-pill mt-1">Hubungi Kami</a>
+      </div>
+
+      <!-- ============================ -->
+      <!-- Kolom 3: Akun sosial media -->
+      <!-- ============================ -->
+      <div class="col-md-4">
+        <h6 class="fw-bold text-red">SOSIAL MEDIA</h6>
+        <p class="text-red"><i class="bi bi-facebook"></i> @AneskaNoodle</p>
+        <p class="text-red"><i class="bi bi-instagram"></i> @aneska.noodle</p>
+        <p class="text-red"><i class="bi bi-twitter"></i> @AneskaOfficial</p>
+      </div>
+    </div>
+
+    <!-- Copyright -->
+    <div class="text-center mt-4 small text-red">© 2025 Aneska Noodle</div>
+  </div>
+</footer>
+
+</body>
+</html>
