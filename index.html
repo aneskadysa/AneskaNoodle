@@ -6,14 +6,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Aneska Noodle</title>
 
-  <!-- Google Fonts: Poppins digunakan untuk tampilan teks yang modern dan bersih -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-
-  <!-- Bootstrap CSS untuk sistem grid dan komponen responsif -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-
   <!-- CSS kustom untuk styling khusus -->
   <link rel="stylesheet" href="css/style.css">
+
+  <!-- Google Fonts: Poppins lokal -->
+  <link rel="stylesheet" href="fonts.css"> 
+
+  <!--Bootstrap CSS untuk tata letak responsif dan komponen UI -->
+  <link rel="stylesheet" href="css/bootstrap.min.css">
 </head>
 <body>
 
@@ -23,7 +23,7 @@
 <nav class="navbar navbar-expand-lg custom-navbar px-4">
   <div class="container-fluid">
     <!-- Logo atau nama brand ditampilkan dengan ikon mie -->
-    <a class="navbar-brand text-white" href="#">🍜 Aneska Noodle</a>
+    <a class="navbar-brand text-white fw-semibold" href="#">🍜 Aneska Noodle</a>
   </div>
 </nav>
 
@@ -121,6 +121,23 @@
     <div class="text-center mt-4 small text-red">© 2025 Aneska Noodle</div>
   </div>
 </footer>
+
+<script>
+  // Cek apakah browser support service worker
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      // Daftarkan service worker
+      navigator.serviceWorker.register('/sw.js')
+        .then(registration => {
+          console.log('Service Worker terdaftar dengan scope:', registration.scope);
+        })
+        .catch(error => {
+          console.error('Service Worker gagal terdaftar:', error);
+        });
+    });
+  }
+</script>
+
 
 </body>
 </html>
